@@ -72,9 +72,15 @@ class MainActivity : AppCompatActivity() {
     // 再生が終了した時のリスナクラス
     private  inner class PlayerCompletionListener : MediaPlayer.OnCompletionListener {
         override fun onCompletion(mp: MediaPlayer) {
-            // 再生ボタンのラベルを「再生」に設定
-            val btPlay = findViewById<Button>(R.id.btPlay)
-            btPlay.setText(R.string.bt_play_play)
+            // フィールドのプレーヤーがnullじゃなかったら
+            _player?.let {
+                // ループが設定されていないならば
+                if (!it.isLooping) {
+                    // 再生ボタンのラベルを「再生」に設定
+                    val btPlay = findViewById<Button>(R.id.btPlay)
+                    btPlay.setText(R.string.bt_play_play)
+                }
+            }
         }
     }
 
