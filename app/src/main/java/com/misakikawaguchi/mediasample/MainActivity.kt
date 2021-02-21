@@ -93,4 +93,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+    // アクティビティ終了時の処理
+    override fun onDestroy() {
+        //親クラスのメソッド呼び出し
+        super.onDestroy()
+
+        // フィールドのプレーヤーがnullじゃなかったら
+        _player?.let {
+            // プレーヤーが再生中なら
+            if(it.isPlaying) {
+                // プレーヤーを停止
+                it.stop()
+            }
+            // プレーヤーを解放
+            it.release()
+            // プレーヤーフィールドをnullに
+            _player = null
+        }
+    }
 }
