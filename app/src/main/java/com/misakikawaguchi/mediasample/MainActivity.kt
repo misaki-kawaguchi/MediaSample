@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import java.io.IOException
 
@@ -67,6 +68,29 @@ class MainActivity : AppCompatActivity() {
             // 再生ボタンのラベルを「再生」に設定
             val btPlay = findViewById<Button>(R.id.btPlay)
             btPlay.setText(R.string.bt_play_play)
+        }
+    }
+
+    // 再生ボタンタップ時の処理
+    fun onPlayButtonClick(view: View) {
+        // フィールドのプレーヤーがnullじゃなかったら
+        _player?.let {
+            // 再生ボタンを取得
+            val btPlay = findViewById<Button>(R.id.btPlay)
+            // プレーヤーが再生中だったら
+            if(it.isPlaying) {
+                // プレーヤーを一時停止
+                it.pause()
+                // 再生ボタンのラベルを「再生」に設定
+                btPlay.setText(R.string.bt_play_play)
+            }
+            // プレーヤーが再生中じゃなかったら
+            else {
+                // プレーヤーを再生
+                it.start()
+                // 再生ボタンのラベルを「一時停止」に設定
+                btPlay.setText(R.string.bt_play_pause)
+            }
         }
     }
 }
