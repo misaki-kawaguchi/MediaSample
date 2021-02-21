@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.CompoundButton
+import android.widget.Switch
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
@@ -48,6 +49,11 @@ class MainActivity : AppCompatActivity() {
         catch (ex: IOException) {
             Log.e("MediaSample", "メディアプレーヤー準備時の例外発生", ex)
         }
+
+        // スイッチを取得
+        val loopSwitch = findViewById<Switch>(R.id.swLoop)
+        // スイッチにリスナを設定
+        loopSwitch.setOnCheckedChangeListener(LoopSwitchChangedListener())
     }
 
     // プレーヤー再生準備が整った時のリスナクラス
