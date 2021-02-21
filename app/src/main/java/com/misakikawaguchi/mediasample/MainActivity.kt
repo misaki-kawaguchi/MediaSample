@@ -1,6 +1,7 @@
 package com.misakikawaguchi.mediasample
 
 import android.media.MediaPlayer
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
@@ -13,7 +14,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // フィールドのメディアプレーヤーオブジェクトを生成
+        // ①-1 フィールドのメディアプレーヤーオブジェクトを生成
         _player = MediaPlayer()
+
+        // 音声ファイルのURI文字列を生成
+        val mediaFileUriString = "android.resource://${packageName}/${R.raw.mountain_stream}"
+        // 音声ファイルのURI文字列を元にURIオブジェクトを作成
+        val mediaFileUri = Uri.parse(mediaFileUriString)
     }
 }
