@@ -60,4 +60,13 @@ class MainActivity : AppCompatActivity() {
             btForward.isEnabled = true
         }
     }
+
+    // 再生が終了した時のリスナクラス
+    private  inner class PlayerCompletionListener : MediaPlayer.OnCompletionListener {
+        override fun onCompletion(mp: MediaPlayer) {
+            // 再生ボタンのラベルを「再生」に設定
+            val btPlay = findViewById<Button>(R.id.btPlay)
+            btPlay.setText(R.string.bt_play_play)
+        }
+    }
 }
