@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.CompoundButton
 import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
@@ -133,6 +134,14 @@ class MainActivity : AppCompatActivity() {
                 // 再生を開始
                 it.start()
             }
+        }
+    }
+
+    // スイッチの変更検出用リスナクラス
+    private inner  class LoopSwitchChangedListener : CompoundButton.OnCheckedChangeListener {
+        override fun onCheckedChanged(buttonView: CompoundButton, isChecked: Boolean) {
+            // ループするかどうかを設定
+            _player?.isLooping = isChecked
         }
     }
 }
