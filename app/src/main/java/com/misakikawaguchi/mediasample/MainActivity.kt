@@ -26,10 +26,13 @@ class MainActivity : AppCompatActivity() {
             // ①-2 メディアプレーヤーに音声ファイルを指定
             _player?.setDataSource(applicationContext, mediaFileUri)
 
-            // 非同期でのメディア再生準備が完了した際のリスナを設定
+            // ①-3 非同期でのメディア再生準備が完了した際のリスナを設定
             _player?.setOnPreparedListener(PlayerPreparedListener())
-            // メディア再生が終了した際のリスナを設定
+            // ①-3 メディア再生が終了した際のリスナを設定
             _player?.setOnCompletionListener(PlayerCompletionListener())
+
+            // ①-4 非同期でメディア再生を準備
+            _player?.prepareAsync()
         }
     }
 }
