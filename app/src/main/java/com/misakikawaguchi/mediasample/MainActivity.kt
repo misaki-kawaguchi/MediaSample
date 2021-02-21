@@ -4,6 +4,8 @@ import android.media.MediaPlayer
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +35,15 @@ class MainActivity : AppCompatActivity() {
 
             // ①-4 非同期でメディア再生を準備
             _player?.prepareAsync()
+        }
+
+        // setDataSource()ではIllegalArgumentExceptionとIOExceptionの2種の例外が発生する
+        catch (ex: IllegalAccessException) {
+            Log.e("MediaSample", "メディアプレーヤー準備時の例外発生", ex)
+        }
+
+        catch (ex: IOException) {
+            Log.e("MediaSample", "メディアプレーヤー準備時の例外発生", ex)
         }
     }
 }
