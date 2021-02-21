@@ -114,8 +114,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 戻る処理
-    fun onBackButton(view: View) {
+    fun onBackButtonClick(view: View) {
         // 再生位置を先頭に変更
         _player?.seekTo(0)
     }
+
 }
