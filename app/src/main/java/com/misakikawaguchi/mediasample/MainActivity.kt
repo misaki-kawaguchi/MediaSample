@@ -21,5 +21,10 @@ class MainActivity : AppCompatActivity() {
         val mediaFileUriString = "android.resource://${packageName}/${R.raw.mountain_stream}"
         // 音声ファイルのURI文字列を元にURIオブジェクトを作成
         val mediaFileUri = Uri.parse(mediaFileUriString)
+
+        try {
+            // ①-2 メディアプレーヤーに音声ファイルを指定
+            _player?.setDataSource(applicationContext, mediaFileUri)
+        }
     }
 }
